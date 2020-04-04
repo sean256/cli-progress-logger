@@ -3,48 +3,6 @@ const moment = require('moment');
 const chalk = require('chalk');
 const readline = require('readline');
 
-class Log {
-	constructor({
-		format = '[{date}] {tag}: {message}',
-		dateFormat = 'LTS',
-	} = {}) {
-		this.format = format;
-		this.dateFormat = dateFormat;
-	}
-
-	write(message, { tag }) {
-		Renderable.resetLine();
-		readline.clearLine(process.stdout);
-		const line = expand(this.format, {
-			message,
-			tag,
-			date: moment().format(this.dateFormat),
-		});
-		process.stdout.write(`${line}\n`);
-		Renderable.renderAll();
-	}
-
-	log(message) { // eslint-disable-line
-		this.write(message, { tag: 'LOG' });
-	}
-
-	debug(message) {
-		this.write(message, { tag: 'DEBUG' });
-	}
-
-	info(message) {
-		this.write(message, { tag: chalk.blue('INFO') });
-	}
-
-	warn(message) {
-		this.write(message, { tag: chalk.yellow('WARN') });
-	}
-
-	error(message) {
-		this.write(message, { tag: chalk.red('ERROR') });
-	}
-}
-
 const renderables = [];
 
 class Renderable {
@@ -93,6 +51,62 @@ class Renderable {
 		if (!renderables.length) Renderable.end();
 	}
 }
+
+class Log {
+	constructor({
+		format = '[{date}] {tag}: {message}',
+		dateFormat = 'LTS',
+	} = {}) {
+		this.format = format;
+		this.dateFormat = dateFormat;
+	}
+
+	write(messageToWrite, { tag }) {
+		Renderable.resetLine();
+		readline.clearLine(process.stdout);
+		let msg = messageToWrite;
+		if (messageToWrite instanceof Error) {
+			const { message, stack } = messageToWrite;
+			msg = `${message}\n${stack}\n`;
+		}
+		const line = expand(this.format, {
+			message: msg,
+			tag,
+			date: moment().format(this.dateFormat),
+		});
+		process.stdout.write(`${line}\n`);
+		Renderable.renderAll();
+	}
+
+	log(message) { // eslint-disable-line
+		this.write(message, { tag: 'LOG' });
+	}
+
+	debug(message) {
+		this.write(message, { tag: 'DEBUG' });
+	}
+
+	info(message) {
+		this.write(message, { tag: chalk.blue('INFO') });
+	}
+
+	warn(message) {
+		this.write(message, { tag: chalk.yellow('WARN') });
+	}
+
+	error(message) {
+		this.write(message, { tag: chalk.red('ERROR') });
+	}
+}
+
+const processLogger = new Log();
+process.on('uncaughtException', (err) => {
+	processLogger.write(err, { tag: chalk.red('UNCAUGHT EXCEPTION')});
+});
+
+process.on('unhandledRejection', (err) => {
+	processLogger.write(err, { tag: chalk.red('UNHANDLED REJECTION')});
+});
 
 class Bar extends Renderable {
 	constructor(options) {
