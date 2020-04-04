@@ -1,0 +1,19 @@
+{
+  "name": "cli-progress",
+  "private": true,
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon": "nodemon test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "expand-template": "^2.0.3",
+    "moment": "^2.24.0"
+  },
+  "devDependencies": {}
+}
