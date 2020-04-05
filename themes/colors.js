@@ -16,8 +16,7 @@ const Bar = {
 };
 
 const Todo = {
-	// todo: make colors dynamic here
-	format: `{icon} - ${chalk.grey('{label}')}`,
+	format: '{icon} - {label}',
 	charTodo: '□',
 	charDone: chalk.green('✔︎'),
 	charFailed: chalk.red('✕'),
