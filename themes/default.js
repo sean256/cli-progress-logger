@@ -4,7 +4,7 @@ const Bar = {
 	charIncomplete: '\u2591',
 	charComplete: '\u2593',
 	charCurrent: '',
-	format: '{bar} {percent}',
+	format: '{bar} {percent}% {label}',
 };
 
 const TodoList = {
@@ -12,7 +12,7 @@ const TodoList = {
 	charDone: '✔︎',
 	charFailed: '✕',
 	charPaused: '■',
-	charsProgress: '⣾⣽⣻⢿⡿⣟⣯⣷',
+	charsProgress: ['⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷'],
 };
 
 const Log = {
@@ -27,8 +27,13 @@ const Log = {
 	},
 };
 
+const Divider = {
+	char: '━',
+};
+
 module.exports = {
 	Bar,
 	TodoList,
 	Log,
+	Divider,
 };
