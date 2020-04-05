@@ -1,7 +1,6 @@
 const chalk = require('chalk');
 
 const Bar = {
-	size: 10,
 	charIncomplete: '🌑',
 	charComplete: '🌕',
 	charCurrent: '🌗',
