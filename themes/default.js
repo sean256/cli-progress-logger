@@ -38,6 +38,7 @@ const Counter = {
 module.exports = {
 	Bar,
 	TodoList,
+	Todo: TodoList,
 	Log,
 	Divider,
 	Counter,
