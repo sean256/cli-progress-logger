@@ -31,9 +31,14 @@ const Divider = {
 	char: '━',
 };
 
+const Counter = {
+	format: '{label} => {value}',
+};
+
 module.exports = {
 	Bar,
 	TodoList,
 	Log,
 	Divider,
+	Counter,
 };
