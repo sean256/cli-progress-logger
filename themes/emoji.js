@@ -8,7 +8,7 @@ const Bar = {
 	format: '{bar} {percent}%',
 };
 
-const TodoList = {
+const Todo = {
 	charTodo: '🔲',
 	charDone: '✅',
 	charFailed: '❌',
@@ -30,6 +30,6 @@ const Log = {
 
 module.exports = {
 	Bar,
-	TodoList,
+	Todo,
 	Log,
 };

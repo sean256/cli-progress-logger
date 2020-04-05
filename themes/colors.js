@@ -15,7 +15,9 @@ const Bar = {
 	format: '{bar} {percent}% {label}',
 };
 
-const TodoList = {
+const Todo = {
+	// todo: make colors dynamic here
+	format: `{icon} - ${chalk.grey('{label}')}`,
 	charTodo: '□',
 	charDone: chalk.green('✔︎'),
 	charFailed: chalk.red('✕'),
@@ -50,6 +52,6 @@ const Log = {
 
 module.exports = {
 	Bar,
-	TodoList,
+	Todo,
 	Log,
 };
