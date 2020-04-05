@@ -21,9 +21,9 @@ const Log = {
 	levelTags: {
 		default: '  LOG',
 		debug: 'DEBUG',
-		info: chalk.blue(' INFO'),
-		warn: chalk.yellow(' WARN'),
-		error: chalk.red('ERROR'),
+		info: chalk.blue.bold(' INFO'),
+		warn: chalk.yellow.bold(' WARN'),
+		error: chalk.red.bold('ERROR'),
 	},
 };
 
