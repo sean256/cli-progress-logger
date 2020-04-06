@@ -7,8 +7,6 @@ const Todo = require('./lib/Todo');
 const TodoList = require('./lib/TodoList');
 const { root } = require('./lib/render');
 
-const log = () => new Log();
-
 // const bar = options => new Bar(options);
 // const todo = options => new Todo(options);
 // const todoList = (list, options) => new TodoList(list, options);
@@ -16,17 +14,23 @@ const log = () => new Log();
 // const emptyLine = () => new EmptyLine();
 // const counter = options => new Counter(options);
 
-const bar = options => root.add(new Bar(options));
-const todo = options => root.add(new Todo(options));
-const todoList = options => root.add(new TodoList(options));
+const log = (...args) => root.add(new Log(...args));
+const bar = (...args) => root.add(new Bar(...args));
+const todo = (...args) => root.add(new Todo(...args));
+const todoList = (...args) => root.add(new TodoList(...args));
+const counter = (...args) => root.add(new Counter(...args));
+const emptyLine = (...args) => root.add(new EmptyLine(...args));
+const divider = (...args) => root.add(new Divider(...args));
+
+const setTheme = theme => root.setTheme(theme);
 
 module.exports = {
 	log,
 	bar,
 	todo,
 	todoList,
-	// divider,
-	// emptyLine,
-	// counter,
-	// setTheme,
+	divider,
+	emptyLine,
+	counter,
+	setTheme,
 };
