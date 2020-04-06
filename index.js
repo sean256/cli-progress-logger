@@ -5,26 +5,28 @@ const EmptyLine = require('./lib/EmptyLine');
 const Counter = require('./lib/Counter');
 const Todo = require('./lib/Todo');
 const TodoList = require('./lib/TodoList');
-const { setTheme } = require('./lib/render');
+const { root } = require('./lib/render');
 
-const bar = options => new Bar(options);
 const log = () => new Log();
-const todo = options => new Todo(options);
-const todoList = (list, options) => new TodoList(list, options);
-const divider = () => new Divider();
-const emptyLine = () => new EmptyLine();
-const counter = options => new Counter(options);
 
-// add divider
-divider();
+// const bar = options => new Bar(options);
+// const todo = options => new Todo(options);
+// const todoList = (list, options) => new TodoList(list, options);
+// const divider = () => new Divider();
+// const emptyLine = () => new EmptyLine();
+// const counter = options => new Counter(options);
+
+const bar = options => root.add(new Bar(options));
+const todo = options => root.add(new Todo(options));
+const todoList = options => root.add(new TodoList(options));
 
 module.exports = {
-	bar,
 	log,
+	bar,
 	todo,
 	todoList,
-	divider,
-	emptyLine,
-	counter,
-	setTheme,
+	// divider,
+	// emptyLine,
+	// counter,
+	// setTheme,
 };
