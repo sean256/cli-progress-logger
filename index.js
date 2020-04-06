@@ -24,6 +24,10 @@ const divider = (...args) => root.add(new Divider(...args));
 
 const setTheme = theme => root.setTheme(theme);
 
+const addComponentAfter = (...args) => root.addComponentAfter(...args);
+const addComponentBefore = (...args) => root.addComponentBefore(...args);
+const addComponentFirst = (...args) => root.addComponentFirst(...args);
+
 module.exports = {
 	log,
 	bar,
@@ -33,4 +37,7 @@ module.exports = {
 	emptyLine,
 	counter,
 	setTheme,
+	addComponentAfter,
+	addComponentBefore,
+	addComponentFirst,
 };
